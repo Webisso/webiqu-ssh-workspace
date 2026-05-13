@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webiqu | Native macOS SSH Workspace</title>
+  <meta name="description" content="Webiqu is a native macOS SSH workspace app for terminals, file operations, monitoring, and saved commands. Built by WebissoLLC." />
+  <meta name="theme-color" content="#0f766e" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Space Grotesk", "ui-sans-serif", "sans-serif"],
+            mono: ["IBM Plex Mono", "ui-monospace", "monospace"],
+          },
+          boxShadow: {
+            soft: "0 20px 50px -20px rgba(15, 118, 110, 0.35)",
+          },
+          keyframes: {
+            floatA: {
+              "0%,100%": { transform: "translateY(0px) translateX(0px)" },
+              "50%": { transform: "translateY(-14px) translateX(6px)" },
+            },
+            floatB: {
+              "0%,100%": { transform: "translateY(0px) translateX(0px)" },
+              "50%": { transform: "translateY(10px) translateX(-10px)" },
+            },
+            pulseSoft: {
+              "0%,100%": { opacity: "0.45" },
+              "50%": { opacity: "0.9" },
+            },
+          },
+          animation: {
+            floatA: "floatA 8s ease-in-out infinite",
+            floatB: "floatB 10s ease-in-out infinite",
+            pulseSoft: "pulseSoft 2.8s ease-in-out infinite",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    .grid-pattern {
+      background-image:
+        linear-gradient(to right, rgba(15, 118, 110, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 118, 110, 0.07) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-teal-200/70">
+  <div class="fixed inset-0 -z-10 grid-pattern"></div>
+
+  <header class="sticky top-0 z-40 border-b border-slate-200/70 bg-slate-50/85 backdrop-blur">
+    <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+      <a href="#" class="inline-flex items-center gap-3">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-teal-600 text-sm font-bold text-white shadow-soft">W</span>
+        <span class="text-lg font-semibold tracking-tight">Webiqu</span>
+      </a>
+
+      <div class="hidden items-center gap-7 text-sm font-medium md:flex">
+        <a href="#features" class="text-slate-600 transition hover:text-teal-700">Features</a>
+        <a href="#workflow" class="text-slate-600 transition hover:text-teal-700">Workflow</a>
+        <a href="#stack" class="text-slate-600 transition hover:text-teal-700">Tech Stack</a>
+        <a href="#security" class="text-slate-600 transition hover:text-teal-700">Security</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="https://github.com/Webisso/webiqu-ssh-workspace" target="_blank" rel="noreferrer" class="hidden rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-teal-300 hover:text-teal-700 sm:inline-flex">GitHub</a>
+        <a href="#get-started" class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-700">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="relative mx-auto w-full max-w-6xl px-6 pb-20 pt-16 md:pt-20">
+      <div class="pointer-events-none absolute -left-16 top-8 h-36 w-36 rounded-full bg-teal-300/40 blur-3xl animate-floatA"></div>
+      <div class="pointer-events-none absolute -right-6 top-24 h-44 w-44 rounded-full bg-orange-200/60 blur-3xl animate-floatB"></div>
+
+      <div class="reveal grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div>
+          <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-teal-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-teal-700">
+            <span>Built by</span>
+            <img src="./webisso.svg" alt="Webisso LLC" class="h-4 w-auto" />
+            <span class="h-1.5 w-1.5 rounded-full bg-teal-500 animate-pulseSoft"></span>
+          </p>
+
+          <div class="mb-6 flex flex-wrap items-center gap-2">
+            <a href="https://github.com/Webisso/webiqu-ssh-workspace/stargazers" target="_blank" rel="noreferrer"><img src="https://img.shields.io/github/stars/Webisso/webiqu-ssh-workspace?style=flat-square" alt="GitHub Stars" /></a>
+            <a href="https://github.com/Webisso/webiqu-ssh-workspace/network/members" target="_blank" rel="noreferrer"><img src="https://img.shields.io/github/forks/Webisso/webiqu-ssh-workspace?style=flat-square" alt="GitHub Forks" /></a>
+            <a href="https://github.com/Webisso/webiqu-ssh-workspace/issues" target="_blank" rel="noreferrer"><img src="https://img.shields.io/github/issues/Webisso/webiqu-ssh-workspace?style=flat-square" alt="Open Issues" /></a>
+            <a href="https://github.com/Webisso/webiqu-ssh-workspace/commits/main" target="_blank" rel="noreferrer"><img src="https://img.shields.io/github/last-commit/Webisso/webiqu-ssh-workspace?style=flat-square" alt="Last Commit" /></a>
+            <a href="https://github.com/Webisso/webiqu-ssh-workspace/blob/main/LICENSE" target="_blank" rel="noreferrer"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="MIT License" /></a>
+          </div>
+
+          <h1 class="text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+            Native macOS SSH workspace,
+            <span class="text-teal-700">without context switching.</span>
+          </h1>
+
+          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
+            Webiqu helps you manage multiple servers from one place with integrated terminal sessions,
+            file browsing, monitoring, and saved commands. Built with SwiftUI and SwiftData for a modern,
+            native macOS experience.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#get-started" class="rounded-2xl bg-teal-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-800">Run in Xcode</a>
+            <a href="#features" class="rounded-2xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-teal-300 hover:text-teal-700">Explore Features</a>
+          </div>
+
+          <div class="mt-8 grid max-w-xl grid-cols-2 gap-3 text-sm sm:grid-cols-4">
+            <div class="rounded-xl border border-slate-200 bg-white p-3">
+              <p class="font-mono text-xs text-slate-500">platform</p>
+              <p class="mt-1 font-semibold">macOS</p>
+            </div>
+            <div class="rounded-xl border border-slate-200 bg-white p-3">
+              <p class="font-mono text-xs text-slate-500">ui</p>
+              <p class="mt-1 font-semibold">SwiftUI</p>
+            </div>
+            <div class="rounded-xl border border-slate-200 bg-white p-3">
+              <p class="font-mono text-xs text-slate-500">data</p>
+              <p class="mt-1 font-semibold">SwiftData</p>
+            </div>
+            <div class="rounded-xl border border-slate-200 bg-white p-3">
+              <p class="font-mono text-xs text-slate-500">license</p>
+              <p class="mt-1 font-semibold">MIT</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative rounded-3xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="mb-4 flex items-center justify-between border-b border-slate-100 pb-3">
+            <p class="font-semibold">Server Workspace</p>
+            <div class="flex items-center gap-1.5">
+              <span class="h-2.5 w-2.5 rounded-full bg-rose-400"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+            </div>
+          </div>
+
+          <div class="space-y-3 text-sm">
+            <div class="rounded-xl border border-teal-200 bg-teal-50 p-3">
+              <p class="font-semibold text-teal-800">Terminal Tabs</p>
+              <p class="mt-1 text-teal-700">Open multiple SSH-backed terminal tabs per server.</p>
+            </div>
+
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+              <p class="font-semibold">Files + Monitoring</p>
+              <p class="mt-1 text-slate-600">Browse remote files and inspect CPU, memory, disk in one workspace.</p>
+            </div>
+
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+              <p class="font-semibold">Saved Commands</p>
+              <p class="mt-1 text-slate-600">Store repeatable shell snippets and run them instantly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="mx-auto w-full max-w-6xl px-6 py-8">
+      <div class="reveal">
+        <h2 class="text-3xl font-bold tracking-tight">Highlights</h2>
+        <p class="mt-3 max-w-2xl text-slate-600">Everything from your README, translated into a focused product story.</p>
+      </div>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <article class="reveal rounded-2xl border border-slate-200 bg-white p-5">
+          <h3 class="font-semibold">Server & Group Management</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Organize infrastructure with a sidebar-first macOS navigation model.</p>
+        </article>
+        <article class="reveal rounded-2xl border border-slate-200 bg-white p-5">
+          <h3 class="font-semibold">Multi-Tab Terminal Sessions</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Run parallel shell workflows per server in dedicated tabs.</p>
+        </article>
+        <article class="reveal rounded-2xl border border-slate-200 bg-white p-5">
+          <h3 class="font-semibold">Remote File Operations</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Browse, upload, download, create, rename, and edit files over SSH/SFTP.</p>
+        </article>
+        <article class="reveal rounded-2xl border border-slate-200 bg-white p-5">
+          <h3 class="font-semibold">Live Monitoring</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Track CPU, memory, and disk usage with chart-based visual feedback.</p>
+        </article>
+        <article class="reveal rounded-2xl border border-slate-200 bg-white p-5">
+          <h3 class="font-semibold">Saved Command Library</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Keep frequently used commands close to execution context.</p>
+        </article>
+        <article class="reveal rounded-2xl border border-slate-200 bg-white p-5">
+          <h3 class="font-semibold">Flexible Authentication</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">SSH agent or key-based auth, with app-level key fallback settings.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="workflow" class="mx-auto w-full max-w-6xl px-6 py-16">
+      <div class="reveal">
+        <h2 class="text-3xl font-bold tracking-tight">Core Workflow</h2>
+      </div>
+
+      <div class="mt-8 grid gap-4 lg:grid-cols-3">
+        <article class="reveal rounded-2xl border border-slate-200 bg-white p-6">
+          <p class="font-mono text-xs uppercase tracking-[0.16em] text-teal-700">Step 1</p>
+          <h3 class="mt-2 text-xl font-semibold">Add a Server</h3>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600">Create a server group, define host and user, then choose authentication mode.</p>
+        </article>
+
+        <article class="reveal rounded-2xl border border-slate-200 bg-white p-6">
+          <p class="font-mono text-xs uppercase tracking-[0.16em] text-teal-700">Step 2</p>
+          <h3 class="mt-2 text-xl font-semibold">Operate in Workspace</h3>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600">Use terminal tabs, browse files, monitor metrics, and execute saved commands.</p>
+        </article>
+
+        <article class="reveal rounded-2xl border border-slate-200 bg-white p-6">
+          <p class="font-mono text-xs uppercase tracking-[0.16em] text-teal-700">Step 3</p>
+          <h3 class="mt-2 text-xl font-semibold">Set App Defaults</h3>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600">Configure default key paths and color defaults once for consistent onboarding.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="stack" class="mx-auto w-full max-w-6xl px-6 py-6">
+      <div class="reveal rounded-3xl border border-slate-200 bg-white p-7">
+        <h2 class="text-3xl font-bold tracking-tight">Tech Stack</h2>
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">Swift</span>
+          <span class="rounded-full bg-teal-700 px-3 py-1 text-xs font-semibold text-white">SwiftUI</span>
+          <span class="rounded-full bg-emerald-700 px-3 py-1 text-xs font-semibold text-white">SwiftData</span>
+          <span class="rounded-full bg-orange-600 px-3 py-1 text-xs font-semibold text-white">Charts</span>
+          <span class="rounded-full bg-slate-700 px-3 py-1 text-xs font-semibold text-white">AppKit</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="security" class="mx-auto w-full max-w-6xl px-6 py-16">
+      <div class="reveal rounded-3xl border border-teal-200 bg-teal-50 p-7">
+        <h2 class="text-2xl font-bold tracking-tight text-teal-900">Security Notes</h2>
+        <ul class="mt-4 space-y-2 text-sm leading-relaxed text-teal-900/90">
+          <li>Key handling is managed through dedicated security services in the app architecture.</li>
+          <li>Private and public key paths are user-configured and resolved locally.</li>
+          <li>Review macOS sandbox and file permission behavior before production distribution.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="get-started" class="mx-auto w-full max-w-6xl px-6 pb-20">
+      <div class="reveal rounded-3xl border border-slate-200 bg-white p-8">
+        <h2 class="text-3xl font-bold tracking-tight">Get Started</h2>
+        <p class="mt-3 text-slate-600">Open the Xcode project, select the Webiqu scheme, and build.</p>
+
+        <pre class="mt-6 overflow-x-auto rounded-2xl bg-slate-900 p-4 text-sm text-slate-100"><code class="font-mono">xcodebuild -project Webiqu.xcodeproj -scheme Webiqu -configuration Debug -sdk macosx build</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-3 px-6 py-8 text-sm text-slate-500 md:flex-row md:items-center">
+      <p class="inline-flex items-center gap-2">
+        <span>Webiqu is built and maintained by</span>
+        <img src="./webisso.svg" alt="Webisso LLC" class="h-4 w-auto" />
+      </p>
+      <p class="flex flex-wrap items-center gap-2">
+        <span>Open-source under MIT License.</span>
+        <a href="https://github.com/Webisso/webiqu-ssh-workspace" target="_blank" rel="noreferrer" class="font-semibold text-teal-700 hover:text-teal-800">github.com/Webisso/webiqu-ssh-workspace</a>
+      </p>
+    </div>
+    <div class="border-t border-slate-200/80 bg-slate-50">
+      <div class="mx-auto flex w-full max-w-6xl items-center justify-center gap-2 px-6 py-4 text-xs uppercase tracking-[0.12em] text-slate-500">
+        <span>Developed by</span>
+        <a href="https://webisso.com" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-teal-700 hover:text-teal-800">
+          <img src="./webisso.svg" alt="Webisso LLC" class="h-4 w-auto" />
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.16 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

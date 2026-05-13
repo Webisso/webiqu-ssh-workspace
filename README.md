@@ -1,5 +1,13 @@
 # Webiqu
 
+[![GitHub Stars](https://img.shields.io/github/stars/Webisso/webiqu-ssh-workspace?style=for-the-badge)](https://github.com/Webisso/webiqu-ssh-workspace/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/Webisso/webiqu-ssh-workspace?style=for-the-badge)](https://github.com/Webisso/webiqu-ssh-workspace/network/members)
+[![Open Issues](https://img.shields.io/github/issues/Webisso/webiqu-ssh-workspace?style=for-the-badge)](https://github.com/Webisso/webiqu-ssh-workspace/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/Webisso/webiqu-ssh-workspace?style=for-the-badge)](https://github.com/Webisso/webiqu-ssh-workspace/commits/main)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+
+Repository: https://github.com/Webisso/webiqu-ssh-workspace
+
 Webiqu is a native macOS SSH workspace app built with SwiftUI and SwiftData.
 It helps you manage multiple servers from one place with integrated terminal sessions, file browsing, monitoring, and saved commands.
 
