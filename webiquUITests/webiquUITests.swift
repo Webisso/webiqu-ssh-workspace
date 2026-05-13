@@ -2,7 +2,7 @@
 //  webiquUITests.swift
 //  webiquUITests
 //
-//  Created by Umut Can Arda on 5/13/26.
+//  Created by WebissoLLC on 5/13/26.
 //
 
 import XCTest

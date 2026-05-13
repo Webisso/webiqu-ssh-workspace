@@ -1,0 +1,75 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Xcode / Swift build artifacts
+build/
+DerivedData/
+*.xccheckout
+*.xcscmblueprint
+*.moved-aside
+*.xcuserstate
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Test and runtime output
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Sensitive keys, certs, and credentials
+*.pem
+*.key
+*.p12
+*.p8
+*.cer
+*.csr
+*.mobileprovision
+*.jks
+*.keystore
+*.kdbx
+
+# Common SSH private/public key files
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+id_ecdsa
+id_ecdsa.pub
+id_dsa
+id_dsa.pub
+.ssh/
+
+# Token and secret dumps
+secrets.yml
+secrets.yaml
+secrets.json
+credentials.json
+
+# Editor/IDE local files
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Crash reports
+*.crash
+*.ips
