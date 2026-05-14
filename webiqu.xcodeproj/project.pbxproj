@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4CEF29032FB65EA90095A8AD /* webisso.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF29022FB65EA90095A8AD /* webisso.svg */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4C8F50862FB46DBE00273006 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		4C8F50762FB46DBD00273006 /* webiqu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = webiqu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8F50852FB46DBE00273006 /* webiquTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = webiquTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8F508F2FB46DBE00273006 /* webiquUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = webiquUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CEF29022FB65EA90095A8AD /* webisso.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = webisso.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		4C8F506D2FB46DBD00273006 = {
 			isa = PBXGroup;
 			children = (
+				4CEF29012FB65E9A0095A8AD /* Resources */,
 				4C8F50782FB46DBD00273006 /* webiqu */,
 				4C8F50882FB46DBE00273006 /* webiquTests */,
 				4C8F50922FB46DBE00273006 /* webiquUITests */,
@@ -90,6 +96,14 @@
 				4C8F508F2FB46DBE00273006 /* webiquUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4CEF29012FB65E9A0095A8AD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4CEF29022FB65EA90095A8AD /* webisso.svg */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CEF29032FB65EA90095A8AD /* webisso.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +436,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.webisso.webiqu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -466,7 +481,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.webisso.webiqu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;

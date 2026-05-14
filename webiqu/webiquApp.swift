@@ -67,6 +67,12 @@ struct webiquApp: App {
         }
         .modelContainer(Self.sharedModelContainer)
         .commands {
+            CommandGroup(replacing: .appInfo) {
+                Button("About \(Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? "webiqu")") {
+                    AboutWindowController.shared.showAboutWindow()
+                }
+            }
+
             CommandGroup(replacing: .appSettings) {
                 Button("Settings…") {
                     showingAppSettings = true

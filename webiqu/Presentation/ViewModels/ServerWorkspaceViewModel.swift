@@ -317,7 +317,7 @@ final class ServerWorkspaceViewModel: ObservableObject {
             }
 
             await MainActor.run {
-                self.drainingTerminalSessionIDs.remove(sessionID)
+                _ = self.drainingTerminalSessionIDs.remove(sessionID)
             }
         }
     }
