@@ -11,6 +11,12 @@ Repository: https://github.com/Webisso/webiqu-ssh-workspace
 Webiqu is a native macOS SSH workspace app built with SwiftUI and SwiftData.
 It helps you manage multiple servers from one place with integrated terminal sessions, file browsing, monitoring, and saved commands.
 
+## Download
+
+Prebuilt macOS archives are published on the GitHub Releases page:
+
+- https://github.com/Webisso/webiqu-ssh-workspace/releases
+
 ## Highlights
 
 - Server and group management with a sidebar-first macOS UI
@@ -56,6 +62,35 @@ CLI build example:
 
 ```bash
 xcodebuild -project Webiqu.xcodeproj -scheme Webiqu -configuration Debug -sdk macosx build
+```
+
+## Release Packaging
+
+Use the release helper to package a built `.app` into `dist/` and optionally create a Git tag:
+
+```bash
+scripts/release.sh --app-path webiqu.app --version 1.0.0
+```
+
+This produces:
+
+- `dist/webiqu-<version>-macos.zip`
+- `dist/webiqu-<version>-macos.zip.sha256`
+
+To create and push a release tag after reviewing the generated files:
+
+```bash
+git tag -a v1.0.0 -m "release(v1.0.0): publish macOS build"
+git push origin main
+git push origin v1.0.0
+```
+
+If GitHub CLI is configured, you can then publish the archive directly from `dist/`:
+
+```bash
+gh release create v1.0.0 dist/webiqu-1.0.0-macos.zip dist/webiqu-1.0.0-macos.zip.sha256 \
+	--title "Webiqu v1.0.0" \
+	--notes "Initial macOS release"
 ```
 
 ## Core Workflows

@@ -6,6 +6,7 @@
 # Xcode / Swift build artifacts
 build/
 DerivedData/
+*.app
 *.xccheckout
 *.xcscmblueprint
 *.moved-aside
@@ -29,6 +30,8 @@ xcuserdata/
 *.tmp
 *.swp
 *.swo
+dist/*.zip
+dist/*.sha256
 
 # Local environment files
 .env
