@@ -17,6 +17,12 @@ Prebuilt macOS archives are published on the GitHub Releases page:
 
 - https://github.com/Webisso/webiqu-ssh-workspace/releases
 
+Direct download link for the latest packaged app:
+
+- https://github.com/Webisso/webiqu-ssh-workspace/releases/latest/download/webiqu-macos.zip
+
+Note: users do not download a raw `.app` file from GitHub. The macOS app is distributed as a zip archive that contains `webiqu.app`.
+
 ## Highlights
 
 - Server and group management with a sidebar-first macOS UI
@@ -76,6 +82,20 @@ This produces:
 
 - `dist/webiqu-<version>-macos.zip`
 - `dist/webiqu-<version>-macos.zip.sha256`
+- `dist/webiqu-macos.zip`
+- `dist/webiqu-macos.zip.sha256`
+
+Recommended release asset upload pattern:
+
+- Upload `webiqu-macos.zip` for the stable latest-download URL.
+- Optionally also upload `webiqu-<version>-macos.zip` for version-specific links.
+
+Direct GitHub asset URLs after publishing a release:
+
+```text
+https://github.com/Webisso/webiqu-ssh-workspace/releases/latest/download/webiqu-macos.zip
+https://github.com/Webisso/webiqu-ssh-workspace/releases/download/v1.0.0/webiqu-1.0.0-macos.zip
+```
 
 To create and push a release tag after reviewing the generated files:
 
@@ -88,7 +108,7 @@ git push origin v1.0.0
 If GitHub CLI is configured, you can then publish the archive directly from `dist/`:
 
 ```bash
-gh release create v1.0.0 dist/webiqu-1.0.0-macos.zip dist/webiqu-1.0.0-macos.zip.sha256 \
+gh release create v1.0.0 dist/webiqu-macos.zip dist/webiqu-macos.zip.sha256 dist/webiqu-1.0.0-macos.zip dist/webiqu-1.0.0-macos.zip.sha256 \
 	--title "Webiqu v1.0.0" \
 	--notes "Initial macOS release"
 ```

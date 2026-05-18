@@ -66,16 +66,22 @@ dist_dir="$repo_root/dist"
 archive_name="webiqu-${version}-macos.zip"
 archive_path="$dist_dir/$archive_name"
 checksum_path="$archive_path.sha256"
+latest_archive_path="$dist_dir/webiqu-macos.zip"
+latest_checksum_path="$latest_archive_path.sha256"
 normalized_app_path="$(cd "$(dirname "$app_path")" && pwd)/$(basename "$app_path")"
 
 mkdir -p "$dist_dir"
-rm -f "$archive_path" "$checksum_path"
+rm -f "$archive_path" "$checksum_path" "$latest_archive_path" "$latest_checksum_path"
 
 ditto -c -k --sequesterRsrc --keepParent "$normalized_app_path" "$archive_path"
 shasum -a 256 "$archive_path" > "$checksum_path"
+cp "$archive_path" "$latest_archive_path"
+cp "$checksum_path" "$latest_checksum_path"
 
 echo "Created archive: $archive_path"
 echo "Created checksum: $checksum_path"
+echo "Created latest archive: $latest_archive_path"
+echo "Created latest checksum: $latest_checksum_path"
 
 if [[ "$create_tag" == true ]]; then
   tag_name="v$version"
