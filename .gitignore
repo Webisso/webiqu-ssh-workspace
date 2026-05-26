@@ -32,6 +32,8 @@ xcuserdata/
 *.swo
 dist/*.zip
 dist/*.sha256
+releases/*.sha256
+*.sha256
 
 # Local environment files
 .env

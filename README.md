@@ -5,6 +5,8 @@
 [![Open Issues](https://img.shields.io/github/issues/Webisso/webiqu-ssh-workspace?style=for-the-badge)](https://github.com/Webisso/webiqu-ssh-workspace/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/Webisso/webiqu-ssh-workspace?style=for-the-badge)](https://github.com/Webisso/webiqu-ssh-workspace/commits/main)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+[![Version](https://img.shields.io/github/package-json/v/Webisso/webiqu-ssh-workspace?style=for-the-badge)](https://github.com/Webisso/webiqu-ssh-workspace/blob/main/package.json)
+[![Download macOS ZIP](https://img.shields.io/badge/Download-macOS%20ZIP-black?style=for-the-badge&logo=apple)](https://github.com/Webisso/webiqu-ssh-workspace/releases/latest/download/webiqu-macos.zip)
 
 Repository: https://github.com/Webisso/webiqu-ssh-workspace
 
@@ -16,12 +18,6 @@ It helps you manage multiple servers from one place with integrated terminal ses
 Prebuilt macOS archives are published on the GitHub Releases page:
 
 - https://github.com/Webisso/webiqu-ssh-workspace/releases
-
-Direct download link for the latest packaged app:
-
-- https://github.com/Webisso/webiqu-ssh-workspace/releases/latest/download/webiqu-macos.zip
-
-Note: users do not download a raw `.app` file from GitHub. The macOS app is distributed as a zip archive that contains `webiqu.app`.
 
 ## Highlights
 
@@ -72,45 +68,34 @@ xcodebuild -project Webiqu.xcodeproj -scheme Webiqu -configuration Debug -sdk ma
 
 ## Release Packaging
 
-Use the release helper to package a built `.app` into `dist/` and optionally create a Git tag:
+Release artifacts are generated in `releases/`.
+
+### Fully automated release (recommended)
+
+This command will:
+
+- zip `webiqu.app`
+- write `releases/webiqu-<version>-macos.zip`
+- write `releases/webiqu-macos.zip` (latest-download alias)
+- commit release artifacts to the current branch
+- push the branch
+- create and push tag `v<version>`
+- create/update GitHub Release and upload both zip files (if `gh` is installed)
 
 ```bash
-scripts/release.sh --app-path webiqu.app --version 1.0.0
+npm run release -- --version 1.0.0
 ```
 
-This produces:
-
-- `dist/webiqu-<version>-macos.zip`
-- `dist/webiqu-<version>-macos.zip.sha256`
-- `dist/webiqu-macos.zip`
-- `dist/webiqu-macos.zip.sha256`
-
-Recommended release asset upload pattern:
-
-- Upload `webiqu-macos.zip` for the stable latest-download URL.
-- Optionally also upload `webiqu-<version>-macos.zip` for version-specific links.
-
-Direct GitHub asset URLs after publishing a release:
-
-```text
-https://github.com/Webisso/webiqu-ssh-workspace/releases/latest/download/webiqu-macos.zip
-https://github.com/Webisso/webiqu-ssh-workspace/releases/download/v1.0.0/webiqu-1.0.0-macos.zip
-```
-
-To create and push a release tag after reviewing the generated files:
+### Package only (no git push, no tag)
 
 ```bash
-git tag -a v1.0.0 -m "release(v1.0.0): publish macOS build"
-git push origin main
-git push origin v1.0.0
+npm run release:package -- --version 1.0.0
 ```
 
-If GitHub CLI is configured, you can then publish the archive directly from `dist/`:
+### Tag only
 
 ```bash
-gh release create v1.0.0 dist/webiqu-macos.zip dist/webiqu-macos.zip.sha256 dist/webiqu-1.0.0-macos.zip dist/webiqu-1.0.0-macos.zip.sha256 \
-	--title "Webiqu v1.0.0" \
-	--notes "Initial macOS release"
+npm run release:tag -- --version 1.0.0
 ```
 
 ## Core Workflows

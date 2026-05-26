@@ -1,0 +1,10 @@
+{
+  "name": "webiqu-release-tools",
+  "private": true,
+  "version": "1.0.2",
+  "scripts": {
+    "release": "zsh ./scripts/release.sh --app-path webiqu.app --publish",
+    "release:package": "zsh ./scripts/release.sh --app-path webiqu.app",
+    "release:tag": "zsh ./scripts/release.sh --app-path webiqu.app --tag-only"
+  }
+}
