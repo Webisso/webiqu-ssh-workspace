@@ -80,7 +80,13 @@ This command will:
 - commit release artifacts to the current branch
 - push the branch
 - create and push tag `v<version>`
-- create/update GitHub Release and upload both zip files (if `gh` is installed)
+- create/update GitHub Release and upload both zip files
+
+Prerequisite:
+
+```bash
+gh auth login
+```
 
 ```bash
 npm run release -- --version 1.0.0

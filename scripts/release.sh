@@ -124,6 +124,16 @@ if [[ "$publish" == true ]]; then
     exit 1
   fi
 
+  if ! command -v gh >/dev/null 2>&1; then
+    echo "GitHub CLI (gh) is required for --publish. Install it first." >&2
+    exit 1
+  fi
+
+  if ! gh auth status >/dev/null 2>&1; then
+    echo "GitHub CLI is not authenticated. Run: gh auth login" >&2
+    exit 1
+  fi
+
   if git rev-parse "$tag_name" >/dev/null 2>&1; then
     echo "Tag already exists: $tag_name" >&2
     exit 1
@@ -147,17 +157,13 @@ if [[ "$publish" == true ]]; then
   git push "$remote_name" "$tag_name"
   echo "Pushed tag: $remote_name/$tag_name"
 
-  if command -v gh >/dev/null 2>&1; then
-    if gh release view "$tag_name" >/dev/null 2>&1; then
-      gh release upload "$tag_name" "$archive_path" "$latest_archive_path" --clobber
-      echo "Uploaded assets to existing GitHub Release: $tag_name"
-    else
-      gh release create "$tag_name" "$archive_path" "$latest_archive_path" \
-        --title "Webiqu $tag_name" \
-        --notes "Automated macOS release for $tag_name"
-      echo "Created GitHub Release and uploaded assets: $tag_name"
-    fi
+  if gh release view "$tag_name" >/dev/null 2>&1; then
+    gh release upload "$tag_name" "$archive_path" "$latest_archive_path" --clobber
+    echo "Uploaded assets to existing GitHub Release: $tag_name"
   else
-    echo "gh CLI not found. Skipped GitHub Release upload." >&2
+    gh release create "$tag_name" "$archive_path" "$latest_archive_path" \
+      --title "Webiqu $tag_name" \
+      --notes "Automated macOS release for $tag_name"
+    echo "Created GitHub Release and uploaded assets: $tag_name"
   fi
 fi
